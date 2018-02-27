@@ -28,36 +28,46 @@ object updateProduct extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.
   def apply/*1.2*/(id: Long, updateProductForm: Form[models.Product], user: models.users.User):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
-/*2.2*/import helper._
+/*3.2*/import helper._
 
 
 Seq[Any](format.raw/*1.78*/("""
-"""),_display_(/*3.2*/main("Update product", user)/*3.30*/{_display_(Seq[Any](format.raw/*3.31*/("""
-"""),format.raw/*4.1*/("""<p class="lead"> Update Product</p>
 
-"""),_display_(/*6.2*/form(action=routes.HomeController.updateProductSubmit(id), 'class -> "form-horizontal", 
-'role -> "form",'enctype -> "multipart/form-data")/*7.51*/ {_display_(Seq[Any](format.raw/*7.53*/("""
-    """),format.raw/*8.33*/("""
-    """),_display_(/*9.6*/CSRF/*9.10*/.formField),format.raw/*9.20*/("""
-    """),_display_(/*10.6*/inputText(updateProductForm("name"), '_label -> "Name", 'class -> "form-control")),format.raw/*10.87*/("""
-    """),_display_(/*11.6*/inputText(updateProductForm("description"), '_label -> "Description", 'class -> "form-control")),format.raw/*11.101*/("""
-    """),_display_(/*12.6*/select(updateProductForm("category.id"),options(Category.options),'_label -> "Category", '_default -> "-- Choose a category --", '_showConstraints -> false, 'class -> "form-control")),format.raw/*12.188*/("""     
+"""),format.raw/*4.1*/("""
+"""),_display_(/*5.2*/main("Update product", user)/*5.30*/ {_display_(Seq[Any](format.raw/*5.32*/("""
+    
+"""),format.raw/*7.1*/("""<p class="lead"> Update Product</p>
 
-    """),_display_(/*14.6*/inputText(updateProductForm("stock"), '_label -> "Stock", 'class -> "form-control")),format.raw/*14.89*/("""
-    """),_display_(/*15.6*/inputText(updateProductForm("price"), '_label -> "Price", 'class -> "form-control")),format.raw/*15.89*/("""
+"""),_display_(/*9.2*/form(action=routes.HomeController.updateProductSubmit(id), 'class -> "form-horizontal", 
+'role -> "form",'enctype -> "multipart/form-data")/*10.51*/ {_display_(Seq[Any](format.raw/*10.53*/("""
+    """),format.raw/*11.33*/("""
+    """),_display_(/*12.6*/CSRF/*12.10*/.formField),format.raw/*12.20*/("""
+    """),_display_(/*13.6*/inputText(updateProductForm("name"), '_label -> "Name", 'class -> "form-control")),format.raw/*13.87*/("""
+    """),_display_(/*14.6*/inputText(updateProductForm("description"), '_label -> "Description", 'class -> "form-control")),format.raw/*14.101*/("""
 
-    """),format.raw/*17.5*/("""<label>Image </label>
+    """),_display_(/*16.6*/for((value, name) <- Category.options) yield /*16.44*/ {_display_(Seq[Any](format.raw/*16.46*/("""
+        """),format.raw/*17.9*/("""<input type="checkbox" name="catSelect[]" value=""""),_display_(/*17.59*/value),format.raw/*17.64*/(""""
+        """),_display_(/*18.10*/if(Category.inCategory(value.toLong, id))/*18.51*/ {_display_(Seq[Any](format.raw/*18.53*/("""
+            """),format.raw/*19.13*/("""checked
+        """)))}),format.raw/*20.10*/("""
+        """),format.raw/*21.9*/("""/>"""),_display_(/*21.12*/name),format.raw/*21.16*/("""<br>
+    """)))}),format.raw/*22.6*/("""
+    
+    """),_display_(/*24.6*/inputText(updateProductForm("stock"), '_label -> "Stock", 'class -> "form-control")),format.raw/*24.89*/("""
+    """),_display_(/*25.6*/inputText(updateProductForm("price"), '_label -> "Price", 'class -> "form-control")),format.raw/*25.89*/("""
+    
+    """),format.raw/*27.5*/("""<label>Image </label>
     <input class = "btn-sm btn-default" type="file" name="upload">
     <br><br>
 
     <div class="actions">
         <input type="submit" value="Update Product" class="btn btn-primary">
-        <a href=""""),_display_(/*23.19*/routes/*23.25*/.HomeController.index(0)),format.raw/*23.49*/("""">
+        <a href=""""),_display_(/*33.19*/routes/*33.25*/.HomeController.index(0)),format.raw/*33.49*/("""">
             <button type="button" class="btn btn-warning">Cancel</button>
         </a>
     </div>
- """)))}),format.raw/*27.3*/("""
-""")))}),format.raw/*28.2*/("""
+ """)))}),format.raw/*37.3*/("""
+""")))}),format.raw/*38.2*/("""
 """))
       }
     }
@@ -74,11 +84,11 @@ Seq[Any](format.raw/*1.78*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Tue Feb 27 11:36:35 GMT 2018
-                  SOURCE: /home/wdd/webapps/lab2/app/views/updateProduct.scala.html
-                  HASH: e22da8a99d7c6d8288d4d2f8ccac34a88046f113
-                  MATRIX: 993->1|1142->79|1187->77|1214->96|1250->124|1288->125|1315->126|1378->164|1525->303|1564->305|1596->338|1627->344|1639->348|1669->358|1701->364|1803->445|1835->451|1952->546|1984->552|2188->734|2226->746|2330->829|2362->835|2466->918|2499->924|2750->1148|2765->1154|2810->1178|2943->1281|2975->1283
-                  LINES: 28->1|31->2|34->1|35->3|35->3|35->3|36->4|38->6|39->7|39->7|40->8|41->9|41->9|41->9|42->10|42->10|43->11|43->11|44->12|44->12|46->14|46->14|47->15|47->15|49->17|55->23|55->23|55->23|59->27|60->28
+                  DATE: Tue Feb 27 15:07:24 GMT 2018
+                  SOURCE: /home/wdd/webapps/PlayLab2/app/views/updateProduct.scala.html
+                  HASH: 87bc693b0a049fd9c660124d52b92927cd02c39f
+                  MATRIX: 993->1|1142->80|1187->77|1215->96|1242->98|1278->126|1317->128|1349->134|1412->172|1560->311|1600->313|1633->346|1665->352|1678->356|1709->366|1741->372|1843->453|1875->459|1992->554|2025->561|2079->599|2119->601|2155->610|2232->660|2258->665|2296->676|2346->717|2386->719|2427->732|2475->749|2511->758|2541->761|2566->765|2606->775|2643->786|2747->869|2779->875|2883->958|2920->968|3171->1192|3186->1198|3231->1222|3364->1325|3396->1327
+                  LINES: 28->1|31->3|34->1|36->4|37->5|37->5|37->5|39->7|41->9|42->10|42->10|43->11|44->12|44->12|44->12|45->13|45->13|46->14|46->14|48->16|48->16|48->16|49->17|49->17|49->17|50->18|50->18|50->18|51->19|52->20|53->21|53->21|53->21|54->22|56->24|56->24|57->25|57->25|59->27|65->33|65->33|65->33|69->37|70->38
                   -- GENERATED --
               */
           

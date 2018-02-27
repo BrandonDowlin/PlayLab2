@@ -1,3 +1,11 @@
+clean
 run
-exist
+clean
+h2-browser
+run
+exit
+run
+exit
+clean
+run
 exit
